@@ -125,11 +125,22 @@ Version 0.9, 03 Oct 2024
 
 		~/src/Plone-5.2.xx-UnifiedInstaller-xx/install –with-python=/home/zope/.pyenv/shims/python2.7.18  \--target=/home/zope/instances/staging \--password=local zeo
 
-	To test"
 
-		cd /home/zope/instances/staging/zeocluster
-		./bin/zeoserver start
-		./bin/client1 fg
+	If the installer does not complete, then copy pre-installed version of buildout-cache
+		`cd /home/zope/instances/staging`
+  		`curl https://drive.google.com/file/d/1deBLvzffX12MmMryUwgfMyhulkBNPoTZ/view?usp=drive_link`
+  		`rm -rf buildout-cache`
+  		`tar -xf buildout-cache.tgz`
+  
+  	We then need to put a senaite version of buildout in place and rebuild
+  		`cd zeocluster`
+  		`curl https://github.com/bikalims/bika.documentation/blob/main/docs/buildout.cfg`
+  		`./bin/buildout`
+  	
+	To test
+		`cd /home/zope/instances/staging/zeocluster`
+		`./bin/zeoserver start`
+		`./bin/client1 fg`
 
 	If the client1 starts successfully on port, you’re good to go. Stop the instance before contining
 		"<control> d" to stop client1 and
