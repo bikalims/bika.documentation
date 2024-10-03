@@ -1,0 +1,5 @@
+==================
+bika.documentation
+==================
+
+User documentation
