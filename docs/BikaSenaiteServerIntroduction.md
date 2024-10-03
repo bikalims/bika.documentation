@@ -131,9 +131,30 @@ Version 0.9, 03 Oct 2024
 		./bin/zeoserver start
 		./bin/client1 fg
 
-	If the client1 starts successfully on port, you’re good to go.
+	If the client1 starts successfully on port, you’re good to go. Stop the instance before contining
+		"<control> d" to stop client1 and
+  		`./bin/zeoserver stop`
 
-			
+* To control the starting and stopping of the instance you can install [supervisord](https://supervisord.org)
+  	`sudo apt install supervisor`
+  
+  	Copy the staging conf file into conf.d folder
+  		`sudo curl -o /etc/supervisor/conf.d/staging.supervisord.conf https://github.com/bikalims/bika.documentation/blob/main/docs/staging.supervisord.conf`
+
+  	Update supervisor (which also starts the LIMS)
+  		`sudo supervisorctl update`
+
+  	To see if the LIMS instance started
+  		`supervisorctl status`
+
+* To be able to access the instance from another computer on the LAN, install [nginx](https://nginx.org)
+  		`sudo apt install nginx`
+
+ 	Copy the staging conf file into conf.d folder
+  		`sudo curl -o /etc/nginx/conf.d/staging.nginx.conf https://github.com/bikalims/bika.documentation/blob/main/docs/staging.nginx.conf`
+  
+	Reload nginx
+		`sudo nginx -s reload`			
 
 Installation does not always work first time, often because of incorrect version dependencies. Please search this comprehensive Senaite installation thread: [Complete setup guide, step-by-step](https://community.senaite.org/t/complete-setup-guide-step-by-step/137) for the errors you get as first stop, then the Internet.
 
