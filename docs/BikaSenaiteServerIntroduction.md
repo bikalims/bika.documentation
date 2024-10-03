@@ -140,8 +140,8 @@ Version 0.9, 03 Oct 2024
 	If the installer does not complete, then copy pre-installed version of buildout-cache
 
 		cd /home/zope/instances/staging
-  		curl https://drive.google.com/file/d/1deBLvzffX12MmMryUwgfMyhulkBNPoTZ/view?usp=drive_link
   		rm -rf buildout-cache
+  		curl https://drive.google.com/file/d/1deBLvzffX12MmMryUwgfMyhulkBNPoTZ/view?usp=drive_link
   		tar -xf buildout-cache.tgz
   
   	We then need to put a senaite version of buildout in place and rebuild
