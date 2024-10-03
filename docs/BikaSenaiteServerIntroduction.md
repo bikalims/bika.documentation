@@ -128,55 +128,54 @@ Version 0.9, 03 Oct 2024
 
 	If the installer does not complete, then copy pre-installed version of buildout-cache
 
-		`cd /home/zope/instances/staging`
-  		`curl https://drive.google.com/file/d/1deBLvzffX12MmMryUwgfMyhulkBNPoTZ/view?usp=drive_link`
-  		`rm -rf buildout-cache`
-  		`tar -xf buildout-cache.tgz`
+		cd /home/zope/instances/staging
+  		curl https://drive.google.com/file/d/1deBLvzffX12MmMryUwgfMyhulkBNPoTZ/view?usp=drive_link
+  		rm -rf buildout-cache
+  		tar -xf buildout-cache.tgz
   
   	We then need to put a senaite version of buildout in place and rebuild
   
-  		`cd zeocluster`
-  		`curl https://github.com/bikalims/bika.documentation/blob/main/docs/buildout.cfg`
-  		`./bin/buildout`
+  		cd zeocluster
+  		curl https://github.com/bikalims/bika.documentation/blob/main/docs/buildout.cfg
+  		./bin/buildout
   	
 	To test
 
-		`cd /home/zope/instances/staging/zeocluster`
-		`./bin/zeoserver start`
-		`./bin/client1 fg`
+		cd /home/zope/instances/staging/zeocluster
+		./bin/zeoserver start
+		./bin/client1 fg
 
 	If the client1 starts successfully on port, you’re good to go. Stop the instance before contining
-
-		"<control> d" to stop client1 and
+ 		`CTRL-D`
   		`./bin/zeoserver stop`
 
 * To control the starting and stopping of the instance you can install [supervisord](https://supervisord.org)
   
-  	`sudo apt install supervisor`
+  		sudo apt install supervisor
   
   	Copy the staging conf file into conf.d folder
   
-  		`sudo curl -o /etc/supervisor/conf.d/staging.supervisord.conf https://github.com/bikalims/bika.documentation/blob/main/docs/staging.supervisord.conf`
+  		sudo curl -o /etc/supervisor/conf.d/staging.supervisord.conf https://github.com/bikalims/bika.documentation/blob/main/docs/staging.supervisord.conf
 
   	Update supervisor (which also starts the LIMS)
   
-  		`sudo supervisorctl update`
+  		sudo supervisorctl update
 
   	To see if the LIMS instance started
   
-  		`supervisorctl status`
+  		supervisorctl status
 
 * To be able to access the instance from another computer on the LAN, install [nginx](https://nginx.org)
   
-  		`sudo apt install nginx`
+  		sudo apt install nginx
 
  	Copy the staging conf file into conf.d folder
   
-  		`sudo curl -o /etc/nginx/conf.d/staging.nginx.conf https://github.com/bikalims/bika.documentation/blob/main/docs/staging.nginx.conf`
+  		sudo curl -o /etc/nginx/conf.d/staging.nginx.conf https://github.com/bikalims/bika.documentation/blob/main/docs/staging.nginx.conf
   
 	Reload nginx
 
-		`sudo nginx -s reload`			
+		sudo nginx -s reload			
 
 
 
