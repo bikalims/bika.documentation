@@ -111,13 +111,13 @@ Version 0.9, 03 Oct 2024
 
 	Extend .bashrc with the following commands
 
-		echo 'export PYENV\_ROOT="$HOME/.pyenv"' \>\> \~/.bashrc
-  		echo 'export PATH="$PYENV\_ROOT/bin:$PATH"' \>\> \~/.bashrc
+		echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+  		echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 		echo \-e 'if command \-v pyenv 1\>/dev/null 2\>&1; then\\n  eval* "$(pyenv init \--path)"\\nfi' \>\> \~/.bashrc
 
 	Refresh the terminal
 
-		source \~/.bashrc
+		source ~/.bashrc
 
 	Test pyenv is installed
 
@@ -129,7 +129,7 @@ Version 0.9, 03 Oct 2024
 
 * Download and extract [unified installer](https://github.com/plone/Installers-UnifiedInstaller) into \~/src and install plone
 
-		~/src/Plone-5.2.xx-UnifiedInstaller-xx/install –with-python=/home/zope/.pyenv/shims/python2.7.18  \--target=/home/zope/instances/staging \--password=local zeo
+		~/src/Plone-5.2.xx-UnifiedInstaller-xx/install –with-python=/home/zope/.pyenv/shims/python2.7.18  --target=/home/zope/instances/staging --password=local zeo
 
 
 	If the installer does not complete, then copy pre-installed version of buildout-cache
