@@ -121,7 +121,7 @@ Version 0.9, 03 Oct 2024
 
 	Test pyenv is installed
 
-		pyenv —version	
+		pyenv --version	
 
 * Install the latest version of python 2.7
 
