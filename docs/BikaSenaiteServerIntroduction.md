@@ -68,15 +68,14 @@ Version 0.9, 03 Oct 2024
 
    [senaite.app.spotlight](https://github.com/senaite/senaite.app.spotlight) Easy search tool
 
-3. # Installation {#installation}
-
-   1. # Test LIMS {#test-lims}
+3. # Installation 
+   1. # Test LIMS 
 
    We recommend both Production and Test/Training LIMS installations. 
 
    The secondary LIMS is used for acceptance testing, thereafter as an e-learning sandbox for users to uninhibitedly test real life scenarios without interrupting production.
 
-   2. # Hardware Requirements {#hardware-requirements}
+   2. # Hardware Requirements
 
    Plone requires a lot of memory and for best performance, multi core processors are also recommended. Moderate disk space is needed.
 
@@ -86,35 +85,37 @@ Version 0.9, 03 Oct 2024
 
    We recommend starting on a VM to which resources can be dynamically added, on say a 4 core processor, 32 GB RAM and 250 GB disk. Smaller labs will require less, e.g. 2 cores and 16 GB RAM.
 
-   3. ## Senaite installation {#senaite-installation}
+   3. ## Senaite installation
 
    You can use docker to install senaite if you are familiar with it, see [Section 4](#docker) below, this section covers installing senaite manually.  The [installation section of the Senaite documentation](https://www.senaite.com/docs/installation) is outdated so here is how to install the correct versions of Python and Plone to ensure Senaite works correctly. The Senaite install itself uses [Buildout](http://www.buildout.org/en/latest/) for installation automation. Plone, Senaite and the add-ons are added as eggs .
 
-   *Installation on Ubuntu 24.04*
+   # Installation on Ubuntu 24.04
 
 * Ensure all system dependencies are installed:
 
-  sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim
+  `sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim`
 
 * To allow us to install python 2.7, install pyenv using the [pyenv-installer](https://github.com/pyenv/pyenv-installer):
 
-			*curl https://pyenv.run | bash*
+	`curl https://pyenv.run | bash`
 
-		If you experience issues accessing the git repository, try:
+	If you experience issues accessing the git repository, try:
 
-			*git clone https://github.com/pyenv/pyenv.git \~/.pyenv*
+		`git clone https://github.com/pyenv/pyenv.git \~/.pyenv`
 
-			Extend .bashrc with the following commands
+	Extend .bashrc with the following commands
 
-				*echo 'export PYENV\_ROOT="$HOME/.pyenv"' \>\> \~/.bashrc					echo 'export PATH="$PYENV\_ROOT/bin:$PATH"' \>\> \~/.bashrc				echo \-e 'if command \-v pyenv 1\>/dev/null 2\>&1; then\\n  eval* "$(pyenv init \--path)"\\nfi' \>\> \~/.bashrc
+		> echo 'export PYENV\_ROOT="$HOME/.pyenv"' \>\> \~/.bashrc
+  		echo 'export PATH="$PYENV\_ROOT/bin:$PATH"' \>\> \~/.bashrc
+		echo \-e 'if command \-v pyenv 1\>/dev/null 2\>&1; then\\n  eval* "$(pyenv init \--path)"\\nfi' \>\> \~/.bashrc
 
-			Refresh the terminal
+	Refresh the terminal
 
-				*source \~/.bashrc*
+		`source \~/.bashrc`
 
-			Test pyenv is installed
+	Test pyenv is installed
 
-				*pyenv —version*
+		`pyenv —version`
 
 * Install the latest version of python 2.7
 
