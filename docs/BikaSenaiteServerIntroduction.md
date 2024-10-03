@@ -1,34 +1,34 @@
 Version 0.9, 03 Oct 2024 	
 
-[1 Requisites	1](#requisites)
+[1 Requisites](#requisites)
 
-[2 Code repositories	1](#code-repositories)
+[2 Code repositories1](#code-repositories)
 
-[3 Installation	2](#installation)
+[3 Installation](#installation)
 
-[3.1 Test LIMS	2](#test-lims)
+[3.1 Test LIMS](#test-lims)
 
-[3.2 Hardware Requirements	2](#hardware-requirements)
+[3.2 Hardware Requirements](#hardware-requirements)
 
-[3.3 Senaite installation	3](#senaite-installation)
+[3.3 Senaite installation](#senaite-installation)
 
-[3.4 Production LIMS	3](#production-lims)
+[3.4 Production LIMS](#production-lims)
 
-[4 Docker	3](#docker)
+[4 Docker](#docker)
 
-[5 Maintenance	3](#maintenance)
+[5 Maintenance](#maintenance)
 
-[6 Coding	4](#coding)
+[6 Coding](#coding)
 
-[6.1 Convention	4](#convention)
+[6.1 Convention](#convention)
 
-[6.2 Code Entry Points	4](#code-entry-points)
+[6.2 Code Entry Points](#code-entry-points)
 
-[7 API	4](#api)
+[7 API](#api)
 
-[8 Tech Support	4](#tech-support)
+[8 Tech Support](#tech-support)
 
-1. # Requisites {#requisites}
+1. # Requisites
 
    Installing Senaite requires sound Linux systems administration and [Git](https://git-scm.com/) version control skills. For coding, good Python and Javascript skills and patience with the Plone learning curve. [Plone](https://plone.org/) is the CMS that Senaite LIMS is built on.
 
@@ -137,7 +137,7 @@ Version 0.9, 03 Oct 2024
 
 Installation does not always work first time, often because of incorrect version dependencies. Please search this comprehensive Senaite installation thread: [Complete setup guide, step-by-step](https://community.senaite.org/t/complete-setup-guide-step-by-step/137) for the errors you get as first stop, then the Internet.
 
-4. ## Production LIMS {#production-lims}
+4. ## Production LIMS
 
    For a Production LIMS it is best to install a performance optimised and load balanced stack, all available as Open source and free. Use the equivalent of:
 
@@ -146,10 +146,6 @@ Installation does not always work first time, often because of incorrect version
    Plone
 
    Senaite LIMS and add-ons
-
-   Production stack
-
-   Zope Enterprise Objects, the [ZEO](https://zope.readthedocs.io/en/latest/zopebook/ZEO.html)
 
    [nginX](http://nginx.org/en/docs/http/load_balancing.html) load balancing web server
 
@@ -165,11 +161,11 @@ Installation does not always work first time, often because of incorrect version
 
    Logs rotation 
 
-4. # Docker {#docker}
+4. # Docker
 
    Docker images are also available, e.g. [senaite.docker](https://github.com/senaite/senaite.docker) that can be modified to fit. See  [Readme](https://github.com/senaite/senaite.docker/blob/master/README.md).
 
-5. # Maintenance {#maintenance}
+5. # Maintenance
 
    Senaite and the add-ons are regularly updated with official releases every few months, it is recommended that the upgrades are done on the Test LIMS when they become available, and thoroughly tested before upgrading to Production.
 
@@ -179,7 +175,7 @@ Installation does not always work first time, often because of incorrect version
 
    Formal upgrades can be run in the LIMS UI by admin users when prompted (after the code base was upgraded).
 
-6. # Coding  {#coding}
+6. # Coding
 
    [The Anatomy of Plone](https://training.plone.org/mastering-plone-5/anatomy.html#the-anatomy-of-plone). Zope object-oriented database, [ZODB](https://zodb.org/en/latest/).
 
@@ -213,11 +209,11 @@ Installation does not always work first time, often because of incorrect version
 
   As a next step, coding instrument interfaces are recommended as many of them exist and can be used as templates. See [Interface code example](#heading=h.uwuqb5qv5tck)
 
-7. # API {#api}
+7. # API
 
    Robust RESTful JSON API, [senaite.jsonapi](https://senaitejsonapi.readthedocs.io/). Create, Read and Update (CRU operations) through http GET/POST requests
 
-8. # Tech Support {#tech-support}
+8. # Tech Support
 
    The public Bika Slack channels are good for general gratis user and technical support. Prioritised professional report is billable and managed in private channels, ditto for issues in the [Bika Jira tracker](https://bika.atlassian.net/jira/dashboards/10000).  [Bika Issue Tracking](https://www.bikalims.org/manual/issue-tracking)
 
