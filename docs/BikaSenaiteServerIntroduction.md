@@ -93,7 +93,7 @@ Version 0.9, 03 Oct 2024
 
 * Ensure all system dependencies are installed:
 
-  `sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim`
+	`sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim`
 
 * To allow us to install python 2.7, install pyenv using the [pyenv-installer](https://github.com/pyenv/pyenv-installer):
 
@@ -105,7 +105,7 @@ Version 0.9, 03 Oct 2024
 
 	Extend .bashrc with the following commands
 
-		> echo 'export PYENV\_ROOT="$HOME/.pyenv"' \>\> \~/.bashrc
+		echo 'export PYENV\_ROOT="$HOME/.pyenv"' \>\> \~/.bashrc
   		echo 'export PATH="$PYENV\_ROOT/bin:$PATH"' \>\> \~/.bashrc
 		echo \-e 'if command \-v pyenv 1\>/dev/null 2\>&1; then\\n  eval* "$(pyenv init \--path)"\\nfi' \>\> \~/.bashrc
 
