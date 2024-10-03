@@ -94,6 +94,12 @@ Version 0.9, 03 Oct 2024
 * Ensure all system dependencies are installed:
 
 		sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim
+* Create new user called `zope` and give it sudo access
+
+		sudo adduser zope
+  		sudo usermod -aG sudo zope
+  		su - zope
+  		mkdir instances dist src
 
 * To allow us to install python 2.7, install pyenv using the [pyenv-installer](https://github.com/pyenv/pyenv-installer):
 
@@ -115,7 +121,7 @@ Version 0.9, 03 Oct 2024
 
 	Test pyenv is installed
 
-		pyenv —version
+		pyenv —version	
 
 * Install the latest version of python 2.7
 
