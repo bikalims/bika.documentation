@@ -32,7 +32,7 @@ Version 0.8, 08 Aug 2024
 
    Installing Senaite requires sound Linux systems administration and [Git](https://git-scm.com/) version control skills. For coding, good Python and Javascript skills and patience with the Plone learning curve. [Plone](https://plone.org/) is the CMS that Senaite LIMS is built on.
 
-2. # Code repositories {#code-repositories}
+2. # Code repositories 
 
    [Senaite](https://www.senaite.com/) evolved from [Bika LIMS](https://www.bikalims.org/). Bika Lab Systems (project founders) codes on Senaite, and develops and maintains Senaite add-ons, some non core functions under the Bika banner.
 
