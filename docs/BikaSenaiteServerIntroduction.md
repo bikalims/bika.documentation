@@ -131,7 +131,9 @@ Version 0.9, 03 Oct 2024
 * Download and extract [unified installer](https://github.com/plone/Installers-UnifiedInstaller) into \~/src and install plone
   	
 		wget --no-check-certificate https://launchpad.net/plone/5.2/5.2.14/+download/Plone-5.2.14-UnifiedInstaller-1.0.tgz
+  
   		tar -xf Plone-5.2.14-UnifiedInstaller-1.0.tgz
+  
 		~/Plone-5.2.14-UnifiedInstaller-1.0/install.sh --with-python=/home/zope/.pyenv/versions/venv2.7.18/bin/python  --target=/home/zope/instances/staging --password=local zeo
 
 
