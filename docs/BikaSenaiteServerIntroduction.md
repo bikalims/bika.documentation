@@ -93,15 +93,15 @@ Version 0.9, 03 Oct 2024
 
 * Ensure all system dependencies are installed:
 
-	`sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim`
+		sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim
 
 * To allow us to install python 2.7, install pyenv using the [pyenv-installer](https://github.com/pyenv/pyenv-installer):
 
-	`curl https://pyenv.run | bash`
+  		curl https://pyenv.run | bash
 
 	If you experience issues accessing the git repository, try:
 
-		`git clone https://github.com/pyenv/pyenv.git \~/.pyenv`
+  		git clone https://github.com/pyenv/pyenv.git \~/.pyenv
 
 	Extend .bashrc with the following commands
 
@@ -111,29 +111,27 @@ Version 0.9, 03 Oct 2024
 
 	Refresh the terminal
 
-		`source \~/.bashrc`
+		source \~/.bashrc
 
 	Test pyenv is installed
 
-		`pyenv —version`
+		pyenv —version
 
 * Install the latest version of python 2.7
 
-			*pyenv install 2.7.18*
+		pyenv install 2.7.18
 
 * Download and extract [unified installer](https://github.com/plone/Installers-UnifiedInstaller) into \~/src and install plone
 
-			*\~/src/Plone-5.2.xx-UnifiedInstaller-xx/install –with-python=/home/zope/.pyenv/shims/python2.7.18  \--target=/home/zope/instances/staging \--password=local zeo*
+		~/src/Plone-5.2.xx-UnifiedInstaller-xx/install –with-python=/home/zope/.pyenv/shims/python2.7.18  \--target=/home/zope/instances/staging \--password=local zeo
 
-			To  test
+	To test"
 
-				*cd /home/zope/instances/staging/zeocluster*	
+		cd /home/zope/instances/staging/zeocluster
+		./bin/zeoserver start
+		./bin/client1 fg
 
-				*./bin/zeoserver start*
-
-				*./bin/client1 fg*
-
-			If the client1 starts successfully on port, you’re good to go.
+	If the client1 starts successfully on port, you’re good to go.
 
 			
 
