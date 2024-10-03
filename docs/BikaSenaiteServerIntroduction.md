@@ -146,8 +146,9 @@ Version 0.9, 03 Oct 2024
 		./bin/client1 fg
 
 	If the client1 starts successfully on port, you’re good to go. Stop the instance before contining
- 		`CTRL-D`
-  		`./bin/zeoserver stop`
+
+ 		CTRL-D
+  		./bin/zeoserver stop
 
 * To control the starting and stopping of the instance you can install [supervisord](https://supervisord.org)
   
