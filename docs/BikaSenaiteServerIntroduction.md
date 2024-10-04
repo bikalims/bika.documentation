@@ -137,11 +137,11 @@ Version 0.9, 03 Oct 2024
 		~/Plone-5.2.14-UnifiedInstaller-1.0/install.sh --with-python=/home/zope/.pyenv/versions/venv2.7.18/bin/python  --target=/home/zope/instances/staging --password=local zeo
 
 
-	If the installer does not complete, then copy pre-installed version of buildout-cache
+	If the installer does not complete, then copy pre-installed version of buildout-cache from (https://drive.google.com/file/d/1deBLvzffX12MmMryUwgfMyhulkBNPoTZ/view?usp=drive_link) into your Downloads folder
 
 		cd /home/zope/instances/staging
   		rm -rf buildout-cache
-  		curl https://drive.google.com/file/d/1deBLvzffX12MmMryUwgfMyhulkBNPoTZ/view?usp=drive_link
+  		mv ~/Downloads/buildout-cache.tgz .
   		tar -xf buildout-cache.tgz
   
   	We then need to put a senaite version of buildout in place and rebuild
