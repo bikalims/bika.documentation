@@ -147,6 +147,7 @@ Version 0.9, 03 Oct 2024
   	We then need to put a senaite version of buildout in place and rebuild
   
   		cd zeocluster
+  		rm buildout.cfg
   		curl -O https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/buildout.cfg
   		./bin/buildout
   	
