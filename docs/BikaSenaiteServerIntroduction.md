@@ -168,7 +168,7 @@ Version 0.9, 03 Oct 2024
   
   	Copy the staging conf file into conf.d folder
   
-  		sudo curl -o /etc/supervisor/conf.d/staging.supervisord.conf https://github.com/bikalims/bika.documentation/blob/main/docs/staging.supervisord.conf
+  		sudo curl -o /etc/supervisor/conf.d/staging.supervisord.conf https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/staging.supervisord.conf
 
   	Update supervisor (which also starts the LIMS)
   
@@ -184,7 +184,7 @@ Version 0.9, 03 Oct 2024
 
  	Copy the staging conf file into conf.d folder
   
-  		sudo curl -o /etc/nginx/conf.d/staging.nginx.conf https://github.com/bikalims/bika.documentation/blob/main/docs/staging.nginx.conf
+  		sudo curl -o /etc/nginx/conf.d/staging.nginx.conf https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/staging.nginx.conf
   
 	Reload nginx
 
