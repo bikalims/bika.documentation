@@ -166,7 +166,7 @@ Version 0.9, 03 Oct 2024
   
   		sudo apt install supervisor
   
-  	Copy the staging conf file into conf.d folder
+  	Copy the staging conf file into conf.d folder (note that on line 8 the server name might need to be changed to the server IP Address)
   
   		sudo curl -o /etc/supervisor/conf.d/staging.supervisord.conf https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/staging.supervisord.conf
 
