@@ -107,7 +107,7 @@ Version 0.9, 03 Oct 2024
 
 	If you experience issues accessing the git repository, try:
 
-  		git clone https://github.com/pyenv/pyenv.git \~/.pyenv
+  		git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 	Extend .bashrc with the following commands
 
