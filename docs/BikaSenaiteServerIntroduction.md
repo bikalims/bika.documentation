@@ -38,7 +38,7 @@ Version 0.9, 03 Oct 2024
 
    Main code and add-ons live in the Senaite repositories, [https://github.com/senaite](https://github.com/senaite).
 
-   Core 
+   **Core** 
 
    [senaite.core](https://github.com/senaite/senaite.core) 
 
@@ -46,11 +46,11 @@ Version 0.9, 03 Oct 2024
 
    [senaite.lims](https://github.com/senaite/senaite.lims) Meta package installing dependencies
 
-   Important add-ons
+   **Important add-ons**
 
    [senaite.impress](https://github.com/senaite/senaite.impress) for rendering COAs to PDF
 
-   Popular add-ons
+   **Popular add-ons**
 
    [senaite.instruments](https://github.com/bikalims/senaite.instruments) Collection of instrument interfaces. (NB from the Bika repos \- the Senaite one was last added to in 2021\) 
 
