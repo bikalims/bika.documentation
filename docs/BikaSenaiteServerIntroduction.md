@@ -262,7 +262,7 @@ Installation does not always work first time, often because of incorrect version
 
      METAL (Macro Expansion for TAL) enables the combination, re-use and nesting of templates.
 
-     [Plone examples and training documentation](https://training.plone.org/mastering-plone-5/zpt.html). See a [Bika COA code example](#heading=h.tjhigkfofvq6) below
+     [Plone examples and training documentation](https://training.plone.org/mastering-plone-5/zpt.html). See a [Bika COA code example](#heading=h.tjhigkfofvq6).
 
   As a next step, coding instrument interfaces are recommended as many of them exist and can be used as templates. See [Interface code example](#heading=h.uwuqb5qv5tck)
 
