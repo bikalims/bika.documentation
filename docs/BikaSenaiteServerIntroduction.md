@@ -240,7 +240,7 @@ Installation does not always work first time, often because of incorrect version
 
    [Developing for Plone](https://5.docs.plone.org/develop/index.html)
 
-   1. ## Convention {#convention}
+   1. ## Convention
 
    See the [Senaite Contribution guide](https://github.com/senaite/senaite.core/blob/2.x/CONTRIBUTING.md). For your code:
 
@@ -254,7 +254,7 @@ Installation does not always work first time, often because of incorrect version
 
 * Add a changelog entry in CHANGES.rst
 
-  2. ## Code Entry Points {#code-entry-points}
+  2. ## Code Entry Points
 
   Coding COAs is a good entry point. The COA's are page templates which are HTML files with some additional information, written in TAL, METAL and TALES.
 
