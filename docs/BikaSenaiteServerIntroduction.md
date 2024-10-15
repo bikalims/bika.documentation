@@ -30,6 +30,10 @@ Version 0.9, 03 Oct 2024
 
 [9 Code Examples](#code-examples)
 
+[9.1 COA](#coa)
+
+[9.2 Instrument Interface](#instrument-interface)
+
 1. # Requisites
 
    Installing Senaite requires sound Linux systems administration and [Git](https://git-scm.com/) version control skills. For coding, good Python and Javascript skills and patience with the Plone learning curve. [Plone](https://plone.org/) is the CMS that Senaite LIMS is built on.
