@@ -2,7 +2,7 @@ Version 0.9, 03 Oct 2024
 
 [1 Requisites](#requisites)
 
-[2 Code repositories1](#code-repositories)
+[2 Code repositories](#code-repositories)
 
 [3 Installation](#installation)
 
@@ -27,6 +27,8 @@ Version 0.9, 03 Oct 2024
 [7 API](#api)
 
 [8 Tech Support](#tech-support)
+
+[9 Code Examples](#code-examples)
 
 1. # Requisites
 
@@ -274,7 +276,7 @@ Installation does not always work first time, often because of incorrect version
 
    The public Bika Slack channels are good for general gratis user and technical support. Prioritised professional report is billable and managed in private channels, ditto for issues in the [Bika Jira tracker](https://bika.atlassian.net/jira/dashboards/10000).  [Bika Issue Tracking](https://www.bikalims.org/manual/issue-tracking)
 
-9. # Code examples
+9. # Code Examples
 
    1. ## COA
 
