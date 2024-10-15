@@ -325,5 +325,118 @@ A portion of the results table, here we display the result for the analysis serv
                      	 </span>
                 	</td> …
 
+2. ## Instrument Interface
 
+    For a simple flat results table from the instrument. e.g. for a Lactoscope, Samples per row, Analyses per column. Sample ID in column A,  column B is ignored, results per Analysis from column C to the right.
+   
+    Analyses are identified in the header row:
+
+| Sample ID | Instrument Serial Number | Predicted Fat % m/m | Predicted Protein % m/m | Predicted Lactose % m/m | Predicted Solids % m/m |
+| --------- | ------------------------ | ------------------- | ----------------------- | ----------------------- | ---------------------- |
+| H23-04845 | 878929 | 5.22 | 3.88 | 4.73 | 14.71 |
+| H23-04844 | 878929 | 5.25 | 3.91 | 4.74 | 14.78 |
+| H23-04843 | 878929 | 5.35 | 3.94 | 4.7 | 14.9 |
+
+  **Reading the imported file**
+
+A CSV in this case. [Code](https://github.com/bikalims/senaite.instruments/blob/main/src/senaite/instruments/instruments/perkinelmer/lactoscope/lactoscopeh23061316.py#L148)
+
+	def parse(self):
+    	order = []
+    	ext = splitext(self.infile.filename.lower())[-1]
+    	if ext == ".xlsx":
+        	order = (self.xlsx_to_csv, self.xls_to_csv)
+    	elif ext == ".xls":
+        	order = (self.xls_to_csv, self.xlsx_to_csv)
+    	elif ext == ".csv":
+        	self.csv_data = self.infile
+    	if order:
+        	for importer in order:
+            	try:
+                	self.csv_data = importer(
+                    	infile=self.infile,
+                    	worksheet=self.worksheet,
+                    	delimiter=self.delimiter,
+                	)
+                	break
+            	except SheetNotFound:
+                	self.err("Sheet not found in workbook: %s" % self.worksheet)
+                	return -1
+            	except Exception as e:  # noqa
+                	pass
+        	else:
+            	self.warn("Can't parse input file as XLS, XLSX, or CSV.")
+            	return -1
+    	stub = FileStub(file=self.csv_data, name=str(self.infile.filename))
+    	self.csv_data = FileUpload(stub)
+
+    	portal_type = ""
+    	lines = self.csv_data.readlines()
+    	reader = csv.DictReader(lines) 
+
+   **Parsing a row and updating field values** 
+
+The column headers, e.g. Predicted Fat % m/m, must correspond to Analysis Keywords on the Sample that are not allowed special characters, and these are split out of the header title before comparison. [Code](https://github.com/bikalims/senaite.instruments/blob/main/src/senaite/instruments/instruments/perkinelmer/lactoscope/lactoscopeh23061316.py#L217)
+
+def parse_ar_row(self, sample_id, row_nr, row):
+    	ar = self.get_ar(sample_id)
+    	parsed = {subn(r"[^\w\d\-_]*", "", k)[0]: v for k, v in row.items()}
+    	# m°C
+    	parsed = {subn(r'mm', '', k)[0]: v for k, v in parsed.items() if k}
+    	parsed = {subn(r'mg100g', '', k)[0]: v for k, v in parsed.items() if k}
+    	parsed = {subn(r'mS', '', k)[0]: v for k, v in parsed.items() if k}
+    	parsed = {subn(r'mC', '', k)[0]: v for k, v in parsed.items() if k}
+    	parsed = {subn(r'-', '', k)[0]: v for k, v in parsed.items() if k}
+
+    	warnings = False
+    	for kw, v in parsed.items():
+        	if kw == "InstrumentSerialNumber":
+            	continue
+        	if kw == "DateTimeofAnalysis":
+            	continue
+        	if kw == "Lab":
+            	continue
+        	if kw == "ProductName":
+            	continue
+        	if kw == "Warning":
+            	continue
+        	if kw == "SampleID":
+            	continue
+        	try:
+            	analysis = self.get_analysis(ar, kw)
+            	if not analysis:
+                	warnings = True
+                	continue
+            	keyword = analysis.getKeyword
+            	new_dict = {
+                	"Lab": parsed["Lab"],
+                	"ProductName": parsed["ProductName"],
+                	"InstrumentSerialNumber": parsed["InstrumentSerialNumber"],
+                	"DateTimeofAnalysis": parsed["DateTimeofAnalysis"],
+                	"SampleID": parsed["SampleID"],
+                	kw: parsed[kw],
+            	}
+            	self.parse_row(row_nr, new_dict, keyword)
+        	except Exception as e:
+            	self.warn(
+                	msg="Error getting analysis for '${kw}': ${sample_id}",
+                	mapping={"kw": kw, "sample_id": sample_id},
+                	numline=row_nr,
+                	# line=str(row),
+            	)
+            	warnings = True
+    	if warnings:
+        	return 0
+
+   **Using sample_id to find the Sample**
+
+[Code](https://github.com/bikalims/senaite.instruments/blob/main/src/senaite/instruments/instruments/perkinelmer/lactoscope/lactoscopeh23061316.py#L402). Note: Analysis Request = Sample
+
+	def get_ar(sample_id):
+    	query = dict(portal_type="AnalysisRequest", getId=sample_id)
+    	brains = api.search(query, CATALOG_ANALYSIS_REQUEST_LISTING)
+    	try:
+        	return api.get_object(brains[0])
+    	except IndexError:
+        	pass
 
