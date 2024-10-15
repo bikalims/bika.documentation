@@ -274,3 +274,56 @@ Installation does not always work first time, often because of incorrect version
 
    The public Bika Slack channels are good for general gratis user and technical support. Prioritised professional report is billable and managed in private channels, ditto for issues in the [Bika Jira tracker](https://bika.atlassian.net/jira/dashboards/10000).  [Bika Issue Tracking](https://www.bikalims.org/manual/issue-tracking)
 
+9. # Code examples
+
+   1. ## COA
+
+   From [The Zope Book 1](https://zope.readthedocs.io/en/latest/zopebook/index.html), see [10. Using Zope Page Templates 1](https://zope.readthedocs.io/en/latest/zopebook/ZPT.html) and [27. Appendix C: Zope Page Templates Reference](https://zope.readthedocs.io/en/latest/zopebook/AppendixC.html)
+
+   **Multi Sample COA, bika.coa:Multi.Pt**
+
+   The COA Header with the lab logo ( [link to code](https://github.com/bikalims/bika.coa/blob/green_coa/src/bika/coa/reports/Multi.pt#L126)):
+		 
+   		<tal:same_verifier condition="python:view.is_verifier_unique(collection)[0]">
+ 		 <tal:render condition="python:True">
+			<div class="row section-header no-gutters">
+ 		 	<!-- Header Table -->
+  		  	<div class="col-6 text-left">
+  		    	<!-- Header Left -->
+  	    	<h1>Certificate of Analysis</h1>
+    	  	<h1 name='coa_num' tal:content="python: coa_num"/>
+    			</div>
+    			<div class="col-6 text-right">
+      		  	<!-- Header Right -->
+        		<img class="logo image-fluid" style="object-fit:contain"
+          	   	tal:attributes="src python:view.get_toolbar_logo();style styles/logo_styles"/>
+  			</div>
+			</div>
+	 	 </tal:render>
+ 
+  
+A portion of the results table, here we display the result for the analysis services (code):
+
+ 		<tal:results repeat="model page">
+		<tal:analyses tal:define="analyses python:view.get_analyses_by(model, title=row_data[0]);">
+		<tal:analysis tal:repeat="analysis analyses">
+                   <td colspan="2" class="text-center"
+                        tal:define="result python:model.get_formatted_result(analysis);
+                        verified python:analysis.review_state in ['published', 'verified']">
+                      <span class="font-weight-normal"
+                            tal:condition="python:result and verified"
+                            tal:content="structure result" />
+                      <span class="font-weight-normal"
+                            tal:condition="python:result and not verified">-</span>
+                      <span class="font-weight-normal"
+                            tal:condition="not:result"></span>
+                      <span tal:condition="python:model.is_out_of_range(analysis)"
+                            class="font-weight-normal">
+			<span class="outofrange text-danger">
+                              <img tal:attributes="src python:report_images['outofrange_symbol_url']"/>
+               		 </span>
+                     	 </span>
+                	</td> …
+
+
+
