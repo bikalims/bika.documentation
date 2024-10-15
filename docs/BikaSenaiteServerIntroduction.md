@@ -384,15 +384,15 @@ A CSV in this case. [Code](https://github.com/bikalims/senaite.instruments/blob/
 
 The column headers, e.g. Predicted Fat % m/m, must correspond to Analysis Keywords on the Sample that are not allowed special characters, and these are split out of the header title before comparison. [Code](https://github.com/bikalims/senaite.instruments/blob/main/src/senaite/instruments/instruments/perkinelmer/lactoscope/lactoscopeh23061316.py#L217)
 
-def parse_ar_row(self, sample_id, row_nr, row):
-    	ar = self.get_ar(sample_id)
-    	parsed = {subn(r"[^\w\d\-_]*", "", k)[0]: v for k, v in row.items()}
-    	# m°C
-    	parsed = {subn(r'mm', '', k)[0]: v for k, v in parsed.items() if k}
-    	parsed = {subn(r'mg100g', '', k)[0]: v for k, v in parsed.items() if k}
-    	parsed = {subn(r'mS', '', k)[0]: v for k, v in parsed.items() if k}
-    	parsed = {subn(r'mC', '', k)[0]: v for k, v in parsed.items() if k}
-    	parsed = {subn(r'-', '', k)[0]: v for k, v in parsed.items() if k}
+	def parse_ar_row(self, sample_id, row_nr, row):
+    		ar = self.get_ar(sample_id)
+    		parsed = {subn(r"[^\w\d\-_]*", "", k)[0]: v for k, v in row.items()}
+    		# m°C
+    		parsed = {subn(r'mm', '', k)[0]: v for k, v in parsed.items() if k}
+    		parsed = {subn(r'mg100g', '', k)[0]: v for k, v in parsed.items() if k}
+    		parsed = {subn(r'mS', '', k)[0]: v for k, v in parsed.items() if k}
+    		parsed = {subn(r'mC', '', k)[0]: v for k, v in parsed.items() if k}
+    		parsed = {subn(r'-', '', k)[0]: v for k, v in parsed.items() if k}
 
     	warnings = False
     	for kw, v in parsed.items():
