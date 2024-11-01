@@ -99,13 +99,13 @@ Version 0.9, 03 Oct 2024
 
 * Ensure all system dependencies are installed:
 
-		sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim python3-dev openssl libssl-dev
+		sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim python3-dev openssl libssl-dev libjpeg-dev libreadline-dev
 * Create new user called `zope` and give it sudo access
 
 		sudo adduser zope
   		sudo usermod -aG sudo zope
   		su - zope
-  		mkdir instances dist src
+  		mkdir instances dist
 
 * To allow us to install python 2.7, install pyenv using the [pyenv-installer](https://github.com/pyenv/pyenv-installer):
 
@@ -134,7 +134,7 @@ Version 0.9, 03 Oct 2024
 		pyenv install 2.7.18
   		pyenv virtualenv 2.7.18 venv2.7.18
 
-* Download and extract [unified installer](https://github.com/plone/Installers-UnifiedInstaller) into \~/src and install plone
+* Download and extract [unified installer](https://github.com/plone/Installers-UnifiedInstaller) and install plone
   	
 		wget --no-check-certificate https://launchpad.net/plone/5.2/5.2.14/+download/Plone-5.2.14-UnifiedInstaller-1.0.tgz
   
