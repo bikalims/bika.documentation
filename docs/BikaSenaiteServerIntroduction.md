@@ -20,6 +20,10 @@ Version 0.9, 03 Oct 2024
 
 [6 Maintenance](#maintenance)
 
+[6.1 Backup and Restore](#backup-and-restore)
+
+[6.2 Software Updates](#software-updates)
+
 [7 Coding](#coding)
 
 [7.1 Convention](#convention)
@@ -251,7 +255,8 @@ Installation does not always work first time, often because of incorrect version
     	./bin/client2 restart
     
     
-   2. ## Code updates
+   2. ## Software Updates
+
    Senaite and the add-ons are regularly updated with official releases every few months, it is recommended that the upgrades are done on the Test LIMS when they become available, and thoroughly tested before upgrading to Production.
 
    The releases are subjected to automated unit tests, however If you are running your own customised add-ons, test those particularly well as changes in the core might affect them.
