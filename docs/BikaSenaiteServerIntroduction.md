@@ -245,9 +245,11 @@ Installation does not always work first time, often because of incorrect version
     	./bin/backup
 
 * The files in backup folders `var/backups` and `var/blobstoragebackups` should them be copies to a backup storage location
-* To restore from a previous backup simply copy the backed up folders into folders `var/backups` and `var/blobstoragebackups`, run restore and restart the entire instance
-* To restore a backup:
 
+* To restore from a previous backup simply copy the backed up folders into folders `var/backups` and `var/blobstoragebackups`, run restore and restart the entire instance. Create the backup folders if they do not exist.
+* To restore from a backup:
+
+    	# Copy / unzip bakup into backup folders
     	cd /home/zope/instances/staging/zeocluster
     	./bin/restore
     	./bin/zeoserver restart
