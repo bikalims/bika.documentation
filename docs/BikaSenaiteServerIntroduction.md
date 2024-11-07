@@ -14,25 +14,27 @@ Version 0.9, 03 Oct 2024
 
 [3.4 Production LIMS](#production-lims)
 
-[4 Docker](#docker)
+[4 Production](#production)
 
-[5 Maintenance](#maintenance)
+[5 Docker](#docker)
 
-[6 Coding](#coding)
+[6 Maintenance](#maintenance)
 
-[6.1 Convention](#convention)
+[7 Coding](#coding)
 
-[6.2 Code Entry Points](#code-entry-points)
+[7.1 Convention](#convention)
 
-[7 API](#api)
+[7.2 Code Entry Points](#code-entry-points)
 
-[8 Tech Support](#tech-support)
+[8 API](#api)
 
-[9 Code Examples](#code-examples)
+[9 Tech Support](#tech-support)
 
-[9.1 COA](#coa)
+[10 Code Examples](#code-examples)
 
-[9.2 Instrument Interface](#instrument-interface)
+[10.1 COA](#coa)
+
+[10.2 Instrument Interface](#instrument-interface)
 
 1. # Requisites
 
@@ -221,22 +223,41 @@ Installation does not always work first time, often because of incorrect version
    DNS
 
    Back-up and Restore procedures 
-
+    
    Logs rotation 
 
-4. # Docker
+5. # Docker
 
    Docker images are also available, e.g. [senaite.docker](https://github.com/senaite/senaite.docker) that can be modified to fit. See  [Readme](https://github.com/senaite/senaite.docker/blob/master/README.md).
 
 5. # Maintenance
+   1. ## Backup and Restore
+* In the instance folder structure there are 2 backup folders `var/backups` and `var/blobstoragebackups`
+* In the instance `bin` folder there commands `backup` and `restore`
+* To backup an instance:
 
+
+    	cd /home/zope/instances/staging/zeocluster
+    	./bin/backup
+
+* The files in backup folders `var/backups` and `var/blobstoragebackups` should them be copies to a backup storage location
+* To restore from a previous backup simply copy the backed up folder into the in backup folders `var/backups` and `var/blobstoragebackups`, run restore and restore the entire instance
+* To restore a backup:
+
+    	cd /home/zope/instances/staging/zeocluster
+    	./bin/restore
+    	./bin/zeoserver restart
+    	./bin/client1 restart
+    	./bin/client2 restart
+    
+    
+   2. ## Code updates
    Senaite and the add-ons are regularly updated with official releases every few months, it is recommended that the upgrades are done on the Test LIMS when they become available, and thoroughly tested before upgrading to Production.
 
    The releases are subjected to automated unit tests, however If you are running your own customised add-ons, test those particularly well as changes in the core might affect them.
 
-   Upgrade scripts may include data conversions and those take longer to complete. 
+  Upgrade scripts may include data conversions and those take longer to complete.  Formal upgrades can be run in the LIMS UI by admin users when prompted (after the code base was upgraded).
 
-   Formal upgrades can be run in the LIMS UI by admin users when prompted (after the code base was upgraded).
 
 6. # Coding
 
