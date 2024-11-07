@@ -1,4 +1,4 @@
-Version 0.9, 03 Oct 2024 	
+Version 0.10, 07 Nov 2024 	
 
 [1 Requisites](#requisites)
 
