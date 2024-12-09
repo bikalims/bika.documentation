@@ -300,7 +300,7 @@ Installation does not always work first time, often because of incorrect version
 	./bin/zeoserver start
 	./bin/client1 start
 	./bin/client2 start
-
+```
 
 6. # Coding
 
