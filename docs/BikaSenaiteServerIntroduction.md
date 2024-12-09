@@ -249,21 +249,57 @@ Installation does not always work first time, often because of incorrect version
 * To restore from a previous backup simply copy the backed up folders into folders `var/backups` and `var/blobstoragebackups`, run restore and restart the entire instance. Create the backup folders if they do not exist.
 * To restore from a backup:
 
-    	# Copy / unzip bakup into backup folders
+		# Go to the correct folder
     	cd /home/zope/instances/staging/zeocluster
+
+		# Stop you instance
+    	./bin/zeoserver stop
+    	./bin/client1 stop
+    	./bin/client2 stop
+
+    	# Copy / unzip bakup into backup folders
     	./bin/restore
-    	./bin/zeoserver restart
-    	./bin/client1 restart
-    	./bin/client2 restart
+
+		# Restart you instance
+    	./bin/zeoserver start
+    	./bin/client1 start
+    	./bin/client2 start
     
     
    2. ## Software Updates
 
-   Senaite and the add-ons are regularly updated with official releases every few months, it is recommended that the upgrades are done on the Test LIMS when they become available, and thoroughly tested before upgrading to Production.
+	Senaite and the add-ons are regularly updated with official releases every few months, it is recommended that the upgrades are done on the Test LIMS when they become available, and thoroughly tested before upgrading to Production.
 
-   The releases are subjected to automated unit tests, however If you are running your own customised add-ons, test those particularly well as changes in the core might affect them.
+	The releases are subjected to automated unit tests, however If you are running your own customised add-ons, test those particularly well as changes in the core might affect them.
 
-  Upgrade scripts may include data conversions and those take longer to complete.  Formal upgrades can be run in the LIMS UI by admin users when prompted (after the code base was upgraded).
+	Upgrade scripts may include data conversions and those take longer to complete.  Formal upgrades can be run in the LIMS UI by admin users when prompted (after the code base was upgraded).
+
+	An alternative method of creating an instance is to rebuild the code base and restore a know good backup given you have a `buildout.cfg` that matches the the backup exactly.  Note that this is extremely dangerous to run on a producion instance or any instance that has data the needs to be kept for any reason or any instance that does not have access to pull public software from guthub. Follow the following steps carefully:
+
+```bash
+	# Go to the correct folder
+	/home/zope/instances/staging/zeocluster
+
+	# Copy the new `buildout.cfg` in this folder
+
+	# Stop you instance
+	./bin/zeoserver stop
+	./bin/client1 stop
+	./bin/client2 stop
+
+	# Delete the entire code base
+	rm -rf src/*
+
+	# Pull in the code base specified in the buildout sources
+	./bin/buildout -N
+
+	# Copy the zipped backup file in this folder
+	unzip your_backup_file.zip
+
+	# Restart you instance
+	./bin/zeoserver start
+	./bin/client1 start
+	./bin/client2 start
 
 
 6. # Coding
