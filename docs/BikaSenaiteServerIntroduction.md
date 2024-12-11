@@ -253,17 +253,13 @@ Installation does not always work first time, often because of incorrect version
     	cd /home/zope/instances/staging/zeocluster
 
 		# Stop you instance
-    	./bin/zeoserver stop
-    	./bin/client1 stop
-    	./bin/client2 stop
+    	sudo supervisorctl stop
 
     	# Copy / unzip bakup into backup folders
     	./bin/restore
 
 		# Restart you instance
-    	./bin/zeoserver start
-    	./bin/client1 start
-    	./bin/client2 start
+    	sudo supervisorctl start
     
     
    2. ## Software Updates
@@ -280,12 +276,10 @@ Installation does not always work first time, often because of incorrect version
 	# Go to the correct folder
 	/home/zope/instances/staging/zeocluster
 
-	# Copy the new `buildout.cfg` in this folder
+	# Copy the new `buildout.cfg` into this folder
 
 	# Stop you instance
-	./bin/zeoserver stop
-	./bin/client1 stop
-	./bin/client2 stop
+	sudo supervisorctl stop
 
 	# Delete the entire code base
 	rm -rf src/*
@@ -297,9 +291,7 @@ Installation does not always work first time, often because of incorrect version
 	unzip your_backup_file.zip
 
 	# Restart you instance
-	./bin/zeoserver start
-	./bin/client1 start
-	./bin/client2 start
+	sudo supervisorctl start
 ```
 
 6. # Coding
