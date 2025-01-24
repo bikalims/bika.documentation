@@ -273,7 +273,7 @@ Installation does not always work first time, often because of incorrect version
 	An alternative method of creating an instance is to rebuild the code base and restore a know good backup given you have a `buildout.cfg` that matches the the backup exactly.  Note that this is extremely dangerous to run on a producion instance or any instance that has data the needs to be kept for any reason or any instance that does not have access to pull public software from guthub. Follow the following steps carefully:
 
 ```bash
-    # Log in as zope
+    	# Log in as zope
 
 	# Go to the correct folder
 	/home/zope/instances/staging/zeocluster
@@ -281,7 +281,7 @@ Installation does not always work first time, often because of incorrect version
 	# Copy the new `buildout.cfg` in this folder (ensure it is named correctly)
 
 	# Stop you instance
-    sudo supervisorctl stop all
+    	sudo supervisorctl stop all
 
 	# Delete the entire code base
 	rm -rf src/*
@@ -293,7 +293,7 @@ Installation does not always work first time, often because of incorrect version
 	unzip your_backup_file.zip
 
 	# Restart you instance
-    sudo supervisorctl start all
+    	sudo supervisorctl start all
 ```
 
 6. # Coding
