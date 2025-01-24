@@ -278,7 +278,7 @@ Installation does not always work first time, often because of incorrect version
 	# Go to the correct folder
 	/home/zope/instances/staging/zeocluster
 
-	# Copy the new `buildout.cfg` in this folder (ensure it is named correctly)
+	# Copy the new `buildout.cfg` and/or `sources.cfg` into this folder (ensure they are named correctly)
 
 	# Stop you instance
     	sudo supervisorctl stop all
