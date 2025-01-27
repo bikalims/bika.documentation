@@ -296,6 +296,15 @@ Installation does not always work first time, often because of incorrect version
     	sudo supervisorctl start all
 ```
 
+    # Upgrade profiles in a browser
+    * Log into the site as admin
+    * Select `Site Setup` from the profile menu in the top right (you will see `admin`)
+    * Under `General` select `Add-ons`
+    * You should see at least one of the following listings: `Upgrades`, `Available add-ons` and `Activated add-on`
+    * If there are any packages in the `Upgrades` section, click on the Upgrade button for each package
+
+    
+
 6. # Coding
 
    [The Anatomy of Plone](https://training.plone.org/mastering-plone-5/anatomy.html#the-anatomy-of-plone). Zope object-oriented database, [ZODB](https://zodb.org/en/latest/).
