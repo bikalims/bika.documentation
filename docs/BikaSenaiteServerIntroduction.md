@@ -296,7 +296,7 @@ Installation does not always work first time, often because of incorrect version
     	sudo supervisorctl start all
 ```
 
-    # Upgrade profiles in a browser
+    ### Upgrade profiles in a browser!
     * Log into the site as admin
     * Select `Site Setup` from the profile menu in the top right (you will see `admin`)
     * Under `General` select `Add-ons`
