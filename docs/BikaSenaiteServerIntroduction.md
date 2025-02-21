@@ -97,114 +97,125 @@ Version 0.10, 07 Nov 2024
 
    We recommend starting on a VM to which resources can be dynamically added, on say a 4 core processor, 32 GB RAM and 250 GB disk. Smaller labs will require less, e.g. 2 cores and 16 GB RAM.
 
-   3. ## Senaite installation
+   3. # Senaite installation
 
-   You can use docker to install senaite if you are familiar with it, see [Section 4](#docker) below, this section covers installing senaite manually.  The [installation section of the Senaite documentation](https://www.senaite.com/docs/installation) is outdated so here is how to install the correct versions of Python and Plone to ensure Senaite works correctly. The Senaite install itself uses [Buildout](http://www.buildout.org/en/latest/) for installation automation. Plone, Senaite and the add-ons are added as eggs .
-
-   # Installation on Ubuntu 24.04
-
-* Ensure all system dependencies are installed:
-
-		sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim python3-dev openssl libssl-dev libjpeg-dev libreadline-dev
-* Create new user called `zope` and give it sudo access
-
-		sudo adduser zope
-  		sudo usermod -aG sudo zope
-  		su - zope
-  		mkdir instances dist
-
-* To allow us to install python 2.7, install pyenv using the [pyenv-installer](https://github.com/pyenv/pyenv-installer):
-
-  		curl https://pyenv.run | bash
-
-	If you experience issues accessing the git repository, try:
-
-  		git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-
-	Extend .bashrc with the following commands
-
-		echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-  		echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-		echo -e 'if command -v pyenv 1>/dev/null 2>&1; \n then  eval "$(pyenv init --path)" \n fi' >> ~/.bashrc
-
-	Refresh the terminal
-
-		source ~/.bashrc
-
-	Test pyenv is installed
-
-		pyenv --version	
-
-* Install the latest version of python 2.7 and create a virtualenv
-
-		pyenv install 2.7.18
-  		pyenv virtualenv 2.7.18 venv2.7.18
-
-* Download and extract [unified installer](https://github.com/plone/Installers-UnifiedInstaller) and install plone
-  	
-		wget --no-check-certificate https://launchpad.net/plone/5.2/5.2.14/+download/Plone-5.2.14-UnifiedInstaller-1.0.tgz
-  
-  		tar -xf Plone-5.2.14-UnifiedInstaller-1.0.tgz
-  
-		~/Plone-5.2.14-UnifiedInstaller-1.0/install.sh --with-python=/home/zope/.pyenv/versions/venv2.7.18/bin/python  --target=/home/zope/instances/staging --password=local zeo
+      You can use docker to install senaite if you are familiar with it, see [Section 4](#docker) below, this section covers installing senaite manually.  The [installation section of the Senaite documentation](https://www.senaite.com/docs/installation) is outdated so here is how to install the correct versions of Python and Plone to ensure Senaite works correctly. The Senaite install itself uses [Buildout](http://www.buildout.org/en/latest/) for installation automation. Plone, Senaite and the add-ons are added as eggs .
 
 
-	If the installer does not complete, then copy a pre-installed version of [buildout-cache](https://drive.google.com/file/d/1deBLvzffX12MmMryUwgfMyhulkBNPoTZ/view?usp=drive_link) into your Downloads folder
+        * Installation on Ubuntu 24.04
 
-		cd /home/zope/instances/staging
-  		rm -rf buildout-cache
-  		mv ~/Downloads/buildout-cache.tgz .
-  		tar -xf buildout-cache.tgz
-  
-  	We then need to put a senaite version of buildout in place and rebuild
-  
-  		cd zeocluster
-  		rm buildout.cfg
-  		curl -O https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/buildout.cfg
-  		./bin/buildout
-  	
-	To test
+        * Ensure all system dependencies are installed:
 
-		cd /home/zope/instances/staging/zeocluster
-		./bin/zeoserver start
-		./bin/client1 fg
+            sudo apt install build-essential  libxml2 libxml2-dev libxslt1.1 libxslt1-dev  libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 zlib1g zlib1g-dev git vim python3-dev openssl libssl-dev libjpeg-dev libreadline-dev
 
-	If the client1 starts successfully on port, you’re good to go. Stop the instance before contining
+        * Create new user called `zope` and give it sudo access
 
- 		CTRL-C
-  		./bin/zeoserver stop
+                sudo adduser zope
+                sudo usermod -aG sudo zope
+                su - zope
+                mkdir instances dist
 
-* To control the starting and stopping of the instance you can install [supervisord](https://supervisord.org)
-  
-  		sudo apt install supervisor
-  
-  	Copy the staging conf file into conf.d folder (note that on line 8 the server name might need to be changed to the server IP Address)
-  
-  		sudo curl -o /etc/supervisor/conf.d/staging.supervisord.conf https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/staging.supervisord.conf
+        * To allow us to install python 2.7, install pyenv using the [pyenv-installer](https://github.com/pyenv/pyenv-installer):
 
-  	Update supervisor (which also starts the LIMS)
-  
-  		sudo supervisorctl update
+                curl https://pyenv.run | bash
 
-  	To see if the LIMS instance started
-  
-  		supervisorctl status
+            If you experience issues accessing the git repository, try:
 
-* To be able to access the instance from another computer on the LAN, install [nginx](https://nginx.org)
-  
-  		sudo apt install nginx
+                git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
- 	Copy the staging conf file into conf.d folder
-  
-  		sudo curl -o /etc/nginx/conf.d/staging.nginx.conf https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/staging.nginx.conf
-  
-	Reload nginx
+            Extend .bashrc with the following commands
 
-		sudo nginx -s reload			
+                echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+                echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+                echo -e 'if command -v pyenv 1>/dev/null 2>&1; \n then  eval "$(pyenv init --path)" \n fi' >> ~/.bashrc
+
+            Refresh the terminal
+
+                source ~/.bashrc
+
+            Test pyenv is installed
+
+                pyenv --version	
+
+        * Install the latest version of python 2.7 and create a virtualenv
+
+                pyenv install 2.7.18
+                pyenv virtualenv 2.7.18 venv2.7.18
+
+        * Download and extract [unified installer](https://github.com/plone/Installers-UnifiedInstaller) and install plone
+            
+                wget --no-check-certificate https://launchpad.net/plone/5.2/5.2.14/+download/Plone-5.2.14-UnifiedInstaller-1.0.tgz
+          
+                tar -xf Plone-5.2.14-UnifiedInstaller-1.0.tgz
+          
+                ~/Plone-5.2.14-UnifiedInstaller-1.0/install.sh --with-python=/home/zope/.pyenv/versions/venv2.7.18/bin/python  --target=/home/zope/instances/staging --password=local zeo
 
 
+            If the installer does not complete, then copy a pre-installed version of [buildout-cache](https://drive.google.com/file/d/1deBLvzffX12MmMryUwgfMyhulkBNPoTZ/view?usp=drive_link) into your Downloads folder
 
-Installation does not always work first time, often because of incorrect version dependencies. Please search this comprehensive Senaite installation thread: [Complete setup guide, step-by-step](https://community.senaite.org/t/complete-setup-guide-step-by-step/137) for the errors you get as first stop, then the Internet.
+                cd /home/zope/instances/staging
+                rm -rf buildout-cache
+                mv ~/Downloads/buildout-cache.tgz .
+                tar -xf buildout-cache.tgz
+          
+            We then need to put a senaite version of buildout in place and rebuild
+          
+                cd zeocluster
+                rm buildout.cfg
+                curl -O https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/buildout.cfg
+                ./bin/buildout
+            
+            To test
+
+                cd /home/zope/instances/staging/zeocluster
+                ./bin/zeoserver start
+                ./bin/client1 fg
+
+            If the client1 starts successfully on port, you’re good to go. Stop the instance before contining
+
+                CTRL-C
+                ./bin/zeoserver stop
+
+        * To control the starting and stopping of the instance you can install [supervisord](https://supervisord.org)
+          
+                sudo apt install supervisor
+          
+            Copy the staging conf file into conf.d folder (note that on line 8 the server name might need to be changed to the server IP Address)
+          
+                sudo curl -o /etc/supervisor/conf.d/staging.supervisord.conf https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/staging.supervisord.conf
+
+            Update supervisor (which also starts the LIMS)
+          
+                sudo supervisorctl update
+
+            To see if the LIMS instance started
+          
+                supervisorctl status
+
+        * To be able to access the instance from another computer on the LAN, install [nginx](https://nginx.org)
+          
+                sudo apt install nginx
+
+            Copy the staging conf file into conf.d folder
+          
+                sudo curl -o /etc/nginx/conf.d/staging.nginx.conf https://raw.githubusercontent.com/bikalims/bika.documentation/refs/heads/main/docs/staging.nginx.conf
+          
+            Reload nginx
+
+                sudo nginx -s reload	
+                
+        Installation does not always work first time, often because of incorrect version dependencies. Please search this comprehensive Senaite installation thread: [Complete setup guide, step-by-step](https://community.senaite.org/t/complete-setup-guide-step-by-step/137) for the errors you get as first stop, then the Internet.
+
+   4. # Automated data injestion 
+
+        If your installation included senaite.timeseries and you require the injestion of timeseries data to be automated, extend cron configuration to invoke the ingester every 5 minutes.
+
+
+            Login to the server as zope
+            crontab -e
+            Add the follow line and save: 
+            */5 * * * * curl -sS "http://localhost:8081/lims /auto_import_timeseries_results" > /dev/null 2>&1
+
 
 4. ## Production LIMS
 
