@@ -206,9 +206,9 @@ Version 0.10, 07 Nov 2024
                 
         Installation does not always work first time, often because of incorrect version dependencies. Please search this comprehensive Senaite installation thread: [Complete setup guide, step-by-step](https://community.senaite.org/t/complete-setup-guide-step-by-step/137) for the errors you get as first stop, then the Internet.
 
-   4. # Automated data injestion 
+   4. # Automated data ingestion 
 
-        If your installation included senaite.timeseries and you require the injestion of timeseries data to be automated, extend cron configuration to invoke the ingester every 5 minutes.
+        If your installation included senaite.timeseries and you require the ingestion of timeseries data to be automated, extend cron configuration to invoke the ingester every 5 minutes.
 
 
             Login to the server as zope
