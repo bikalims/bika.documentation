@@ -211,7 +211,7 @@ Version 0.10, 07 Nov 2024
         If your installation included senaite.timeseries and you require the ingestion of timeseries data to be automated, extend cron configuration to invoke the ingester every 5 minutes.
 
 
-            Login to the server as zope
+            Login to the server as senaite
             crontab -e
             Add the follow line and save: 
             */5 * * * * curl -sS "http://localhost:8081/lims /auto_import_timeseries_results" > /dev/null 2>&1
