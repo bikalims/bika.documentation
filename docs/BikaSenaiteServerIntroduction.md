@@ -213,8 +213,8 @@ Version 0.10, 07 Nov 2024
 
             Login to the server as zope
             crontab -e
-            Add the follow line and save (ensure host and port are correct for you installation): 
-            */5 * * * * curl -sS "http://localhost:8081/lims /auto_import_timeseries_results" > /dev/null 2>&1
+            Add the follow line and save (ensure username, password, host and port are correct for your installation): 
+            */5 * * * * curl -sS -u myuser:mypassword http://localhost:8081/lims/auto_import_timeseries_results > /dev/null 2>&1
 
 
 4. ## Production LIMS
