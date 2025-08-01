@@ -20,9 +20,11 @@ Version 0.10, 07 Nov 2024
 
 [6 Maintenance](#maintenance)
 
-[6.1 Backup and Restore](#backup-and-restore)
+[6.1 Pack the Database](#database-pack)
 
-[6.2 Software Updates](#software-updates)
+[6.2 Backup and Restore](#backup-and-restore)
+
+[6.3 Software Updates](#software-updates)
 
 [7 Coding](#coding)
 
@@ -237,7 +239,7 @@ Version 0.10, 07 Nov 2024
 
    DNS
 
-   Back-up and Restore procedures 
+   Backup and Restore procedures 
     
    Logs rotation 
 
@@ -245,8 +247,19 @@ Version 0.10, 07 Nov 2024
 
    Docker images are also available, e.g. [senaite.docker](https://github.com/senaite/senaite.docker) that can be modified to fit. See  [Readme](https://github.com/senaite/senaite.docker/blob/master/README.md).
 
-5. # Maintenance
-   1. ## Backup and Restore
+6. # Maintenance
+   1. ## Pack the Database
+* As per the Plone manual, "The Plone database does not automatically prune deleted content. You must periodically pack the database to reclaim space.  Disk packing is an extremely disk-intensive operation. It is best to schedule it to occur when your monitoring indicates that disk usage is usually low."
+* To prune the datbase, the zeopack script is generated during the instance build if it is included in the buildout.cfg (and it is by default). The pack-days parameter should be set to 1in order to prune the database completely.
+* To ensure the datbase is packed regularly, extend cron configuration to invoke zeopack to run at midnight every night.
+
+
+            Login to the server as zope
+            crontab -e
+            Add the follow line and save: 
+            0 0 * * * /home/zope/instances/staging/zeocluster/bin/zeopack
+
+   2. ## Backup and Restore
 * In the instance folder structure there are 2 backup folders `var/backups` and `var/blobstoragebackups`
 * In the instance `bin` folder there commands `backup` and `restore`
 * To backup an instance:
@@ -273,7 +286,7 @@ Version 0.10, 07 Nov 2024
     	sudo supervisorctl start
     
     
-   2. ## Software Updates
+   3. ## Software Updates
 
 	Senaite and the add-ons are regularly updated with official releases every few months, it is recommended that the upgrades are done on the Test LIMS when they become available, and thoroughly tested before upgrading to Production.
 
