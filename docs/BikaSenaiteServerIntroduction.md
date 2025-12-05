@@ -313,9 +313,6 @@ Version 0.10, 07 Nov 2024
 	# Pull in the code base specified in the buildout sources
 	./bin/buildout -N
 
-	# Copy the zipped backup file in this folder if and only if one is provided
-	unzip your_backup_file.zip
-
 	# Restart you instance
     	sudo supervisorctl start all
 ```
