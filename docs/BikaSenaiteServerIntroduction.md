@@ -302,7 +302,8 @@ Version 0.10, 07 Nov 2024
 	# Go to the correct folder
 	/home/zope/instances/staging/zeocluster
 
-	# Copy the new `buildout.cfg` and/or `sources.cfg` into this folder (ensure they are named correctly)
+	# Rename the emailed sources.prod.date.time.cfg (filename includes date and time) file to sources.cfg
+	# Copy the new `sources.cfg` into this folder (ensure they are named correctly)
 
 	# Stop you instance
     	sudo supervisorctl stop all
