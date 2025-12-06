@@ -303,7 +303,7 @@ Version 0.10, 07 Nov 2024
 	/home/zope/instances/staging/zeocluster
 
 	# Rename the emailed sources.prod.date.time.cfg (filename includes date and time) file to sources.cfg
-	# Copy the new `sources.cfg` into this folder (ensure they are named correctly)
+	# Copy the new `sources.cfg` into this folder
 
 	# Stop you instance
     	sudo supervisorctl stop all
@@ -311,7 +311,7 @@ Version 0.10, 07 Nov 2024
 	# Delete the entire code base
 	rm -rf src/*
 
-	# Pull in the code base specified in the buildout sources
+	# Pull in the code base specified in the new sources.cfg
 	./bin/buildout -N
 
 	# Restart you instance
