@@ -231,6 +231,8 @@ Version 0.10, 07 Nov 2024
 
    [nginX](http://nginx.org/en/docs/http/load_balancing.html) load balancing web server
 
+   [Openresty](https://openresty.org/en/) concurrency management
+
    [Supervisor](http://supervisord.org/) Process control
 
    Firewall, ssl, https access and security certificate
@@ -243,11 +245,11 @@ Version 0.10, 07 Nov 2024
     
    Logs rotation 
 
-5. # Docker
+6. # Docker
 
    Docker images are also available, e.g. [senaite.docker](https://github.com/senaite/senaite.docker) that can be modified to fit. See  [Readme](https://github.com/senaite/senaite.docker/blob/master/README.md).
 
-6. # Maintenance
+7. # Maintenance
    1. ## Pack the Database
 * As per the Plone manual, "The Plone database does not automatically prune deleted content. You must periodically pack the database to reclaim space.  Disk packing is an extremely disk-intensive operation. It is best to schedule it to occur when your monitoring indicates that disk usage is usually low."
 * To prune the datbase, the zeopack script is generated during the instance build if it is included in the buildout.cfg (and it is by default). The pack-days parameter should be set to 1in order to prune the database completely.
