@@ -229,9 +229,9 @@ Version 0.10, 07 Nov 2024
 
    Senaite LIMS and add-ons
 
-   [nginX](http://nginx.org/en/docs/http/load_balancing.html) load balancing web server
+   [nginX](http://nginx.org/en/docs/http/load_balancing.html) Load balancing web server
 
-   [Openresty](https://openresty.org/en/) concurrency management
+   [OpenResty](https://openresty.org/en/) Concurrency management
 
    [Supervisor](http://supervisord.org/) Process control
 
