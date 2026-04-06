@@ -1,4 +1,4 @@
-*** bika.documentation
+***bika.documentation
 
 bika.documentation Is a repository where some of the documentation for bika is stored and maintained
 
